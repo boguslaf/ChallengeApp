@@ -18,7 +18,7 @@ else if (isWoman == false && age < 18)
 }
 else
 {
-    Console.WriteLine("Nieznana osoba.");
+    Console.WriteLine($"Osoba o imieniu: {name} w wieku: {age} lat");
 }
     
 var keyInfo = Console.ReadKey(true); // w wersji 17.8.0 Visual Studio program zamyka się automatycznie
