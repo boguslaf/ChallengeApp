@@ -1,25 +1,37 @@
-﻿// Zadanie dnia czwartego
+﻿// Zadanie dnia piątego
 
-string name = "Ewa";
-bool isWoman = true;
-int age = 33;
+int number = 18776;
 
-if (isWoman == true && age < 30)
+string numberToString = number.ToString();
+char[] letters = numberToString.ToArray();
+
+int[] counters = {0,0,0,0,0,0,0,0,0,0};
+char[] numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
+foreach (char l in letters)
 {
-    Console.WriteLine("Kobieta poniżej 30 lat");
+    for (int i=0; i<numbers.Length; i++)
+    {
+        if (l == numbers[i]) { counters[i]++; }
+    }
+
+   /*if (l == '0') { counters[0]++; }
+    if (l == '1') { counters[1]++; }
+    if (l == '2') { counters[2]++; }
+    if (l == '3') { counters[3]++; }
+    if (l == '4') { counters[4]++; }
+    if (l == '5') { counters[5]++; }
+    if (l == '6') { counters[6]++; }
+    if (l == '7') { counters[7]++; }
+    if (l == '8') { counters[8]++; }
+    i  (l == '9') { counters[9]++; } */
 }
-else if (isWoman == true && age == 33 && name == "Ewa")
+
+for (int i = 0; i < counters.Length; i++)
 {
-    Console.WriteLine("Ewa, lat 33");
+    Console.WriteLine(i + " -> " + counters[i]);
 }
-else if (isWoman == false && age < 18)
-{
-    Console.WriteLine("Niepełnoletni mężczyzna");
-}
-else
-{
-    Console.WriteLine($"Osoba o imieniu: {name} w wieku: {age} lat");
-}
+
     
-var keyInfo = Console.ReadKey(true); // w wersji 17.8.0 Visual Studio program zamyka się automatycznie
+var keyInfo = Console.ReadKey(); 
 
