@@ -1,37 +1,49 @@
-﻿// Zadanie dnia piątego
+﻿// Zadanie dnia szóstego
+using ChallengeApp;
 
-int number = 18776;
+Employee emp1 = new Employee("Tytus", "Chmielewski", 15);
+Employee emp2 = new Employee("Romek", "Nowak", 17);
+Employee emp3 = new Employee("Atomek", "Kowalski", 16);
 
-string numberToString = number.ToString();
-char[] letters = numberToString.ToArray();
+emp1.AddScore(1);
+emp1.AddScore(5);
+emp1.AddScore(3);
+emp1.AddScore(7);
+emp1.AddScore(4);
 
-int[] counters = {0,0,0,0,0,0,0,0,0,0};
-char[] numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+emp2.AddScore(8);
+emp2.AddScore(8);
+emp2.AddScore(5);
+emp2.AddScore(9);
+emp2.AddScore(6);
 
-foreach (char l in letters)
+emp3.AddScore(4);
+emp3.AddScore(7);
+emp3.AddScore(2);
+emp3.AddScore(6);
+emp3.AddScore(6);
+
+List<Employee> employees = new List<Employee>()
 {
-    for (int i=0; i<numbers.Length; i++)
+    emp1, emp2, emp3
+};
+
+int maxResult = -1;
+Employee empWithMaxResult = null;
+
+foreach (var e in employees)
+{
+    if (e.Result > maxResult)
     {
-        if (l == numbers[i]) { counters[i]++; }
+        maxResult = e.Result;
+        empWithMaxResult = e;
     }
-
-   /*if (l == '0') { counters[0]++; }
-    if (l == '1') { counters[1]++; }
-    if (l == '2') { counters[2]++; }
-    if (l == '3') { counters[3]++; }
-    if (l == '4') { counters[4]++; }
-    if (l == '5') { counters[5]++; }
-    if (l == '6') { counters[6]++; }
-    if (l == '7') { counters[7]++; }
-    if (l == '8') { counters[8]++; }
-    i  (l == '9') { counters[9]++; } */
 }
 
-for (int i = 0; i < counters.Length; i++)
-{
-    Console.WriteLine(i + " -> " + counters[i]);
-}
+Console.WriteLine("Najwięcej punktów ma "
+    + empWithMaxResult.Name + " "
+    + empWithMaxResult.Surname + " w wysokości "
+    + empWithMaxResult.Result);
 
-    
-var keyInfo = Console.ReadKey(); 
+Console.ReadKey(); 
 
