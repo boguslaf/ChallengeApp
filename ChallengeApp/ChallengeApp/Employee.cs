@@ -11,6 +11,12 @@
             this.Age = age;
         }
 
+        public Employee(string name, int age)
+        {
+            this.Name = name;
+            this.Age = age;
+        }
+
         public void AddScore(int number)
         {
             this.score.Add(number);
