@@ -1,37 +1,42 @@
-﻿namespace ChallengeApp
+﻿using System.Net.NetworkInformation;
+
+namespace ChallengeApp
 {
     public class Employee
     {
-        private List<int> score = new List<int>();
+        private List<float> scores = new List<float>();
 
-        public Employee(string name, string surname, int age)
+        public Employee(string name, string surname, int yearOfBirth)
         {
             this.Name = name;
             this.Surname = surname;
-            this.Age = age;
+            this.Year = yearOfBirth;
         }
-
-        public Employee(string name, int age)
+        public void AddScore(float number)
         {
-            this.Name = name;
-            this.Age = age;
-        }
-
-        public void AddScore(int number)
-        {
-            this.score.Add(number);
+            this.scores.Add(number);
         }
 
         public string Name { get; set; }
         public string Surname { get; set; }
-        public int Age { get; set; }
+        public int Year { get; set; }
 
-        public int Result
+        public Statistics GetStatistics()
         {
-            get
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            foreach (var score in scores) 
             {
-                return this.score.Sum();
+                statistics.Max = Math.Max(statistics.Max, score);
+                statistics.Min = Math.Min(statistics.Min, score);
+                statistics.Average += score;
             }
+            statistics.Average /= this.scores.Count;
+
+            return statistics;
         }
     }
 }
